@@ -28,7 +28,7 @@ function maze_generate() {
     // find num of visited neighbors this obstacle has
     let count = 0;
     for (let neighbor of current.neighbors) {
-      if (evaluated.includes(neighbor) || neighbor === endNode) {
+      if (evaluated.includes(neighbor)) {
         count++;
       }
     }
