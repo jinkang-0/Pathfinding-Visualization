@@ -1,0 +1,279 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+:root {
+  --background: #eaeaeaea;
+  --sidebar: #4A1942;
+  --sidebar-light: #B43D87;
+  --sidebar-dark: #893168;
+  --button: #2E1C2B;
+}
+
+body {
+  background-color: var(--background);
+  overflow: hidden;
+}
+
+canvas {
+  position: absolute;
+}
+
+i {
+  color: white;
+  font-size: 2.5rem;
+}
+
+/* general styling */
+.click {
+  filter: brightness(0.9);
+  cursor: pointer;
+  transition: 50ms;
+}
+
+.click:hover {
+  filter: brightness(1);
+}
+
+.click:active {
+  filter: brightness(0.8);
+}
+
+/* sidebar */
+
+.sidebar {
+  background-color: var(--sidebar);
+  position: relative;
+  margin-left: auto;
+  width: 300px;
+  height: 100vh;
+  transform: translateX(250px);
+  z-index: 99;
+
+  display: grid;
+  grid-template-rows: 50px 1fr;
+  grid-template-columns: 50px 1fr;
+
+  transition: 150ms;
+}
+
+.expanded {
+  transform: translateX(0px);
+}
+
+/* sidebar icon spin */
+#sidebar-icon {
+  margin: auto;
+  transition: 150ms;
+}
+
+.spin {
+  transform: rotate(180deg);
+}
+
+/* collapsed sidebar icon menu */
+.small-menu {
+  width: 50px;
+  height: 100%;
+  background-color: var(--sidebar-light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0 30px 0;
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
+
+.node-item {
+  color: black;
+  font-size: 1.8rem;
+  margin: 15px 0 15px;
+  cursor: pointer;
+}
+
+.node-item:hover {
+  color: gray;
+  filter: brightness(0.3);
+  transition: 50ms;
+}
+
+.node-item.selected {
+  color: gray;
+  filter: brightness(0.5);
+  transition: 25ms;
+}
+
+#media {
+  margin-top: auto;
+  font-size: 1.8rem;
+  color: orange;
+}
+
+/* banner */
+.banner {
+  display: none;
+  display: block;
+  height: 100%;
+}
+
+/* sidebar body */
+.sidebar-body {
+  position: relative;
+  color: white;
+}
+
+.sidebar-body h1 {
+  font-size: 34px;
+  font-weight: bold;
+  text-decoration: underline;
+  text-decoration-thickness: 4px;
+  margin-bottom: 5px;
+}
+
+.algorithms {
+  position: absolute;
+  right: 10px;
+  top: 50px;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+
+.algorithms ul {
+  margin-right: 15px;
+  direction: rtl;
+  font-size: 18px;
+}
+
+.algoItem {
+  filter: brightness(0.75);
+  cursor: pointer;
+  transition: 100ms;
+}
+
+.algoItem:hover {
+  filter: brightness(0.9);
+}
+
+.algoItem:active {
+  filter: brightness(0.7);
+}
+
+.algoItem.selected {
+  filter: brightness(1);
+}
+
+/* buttons */
+.buttons {
+  background: var(--sidebar-dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: 350px;
+  padding: 0 0 20px 30px;
+
+  position: absolute;
+  right: 0;
+  top: 220px;
+
+  clip-path: polygon(20% 15%, 100% 0, 100% 100%, 0 70%);
+}
+
+button {
+  border: none;
+  border-radius: 10px;
+  
+  background: var(--button);
+  color: inherit;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 18px;
+
+  padding: 5px 15px 5px 15px;
+  margin: 10px 0 10px 0;
+}
+
+/* check to allow diagonal */
+.diagonal-check {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+
+.diagonal-check input, .diagonal-check label {
+  cursor: pointer;
+}
+
+/* info */
+#info {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  font-size: 1.2rem;
+  filter: brightness(0.9);
+}
+
+#info:hover {
+  filter: brightness(1);
+}
+
+.info-block {
+  padding: 15px;
+  background: var(--sidebar-dark);
+  border-radius: 6px;
+  z-index: 100;
+  display: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+
+  position: absolute;
+  top: 50px;
+  left: -200px;
+
+  font-weight: normal;
+  font-size: 14px;
+
+  transition: 50ms;
+}
+
+.info-block::before {
+  content: '';
+  width: 35px;
+  height: 35px;
+  clip-path: polygon(0 30%, 100% 0, 60% 100%);
+
+  position: absolute;
+  top: -10px;
+  right: -12px;
+
+  background: var(--sidebar-dark);
+}
+
+.info-block i {
+  color: black;
+  font-size: 1.5rem;
+  margin: 10px 5px 10px 0;
+}
+
+#info:hover + .info-block {
+  display: block;
+}
+
+/* icons later added */
+.nodeIcons {
+  position: absolute;
+  color: black;
+  display: inline-block;
+  font-size: 1.5rem;
+}

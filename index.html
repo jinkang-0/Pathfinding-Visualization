@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Pathfinding Visualization</title>
+
+  <!-- links -->
+  <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- scripts -->
+  <script src="https://kit.fontawesome.com/bf5b084248.js" crossorigin="anonymous"></script>
+  <script src="scripts/main.js"></script>
+  <script src="scripts/tools.js"></script>
+  <script src="scripts/node_spot.js"></script>
+  <script src="scripts/maze.js"></script>
+
+  <!-- pathfinding scripts -->
+  <script src="scripts/pathfinders/a_star.js"></script>
+  <script src="scripts/pathfinders/dijkstra.js"></script>
+  <script src="scripts/pathfinders/dfs.js"></script>
+  <script src="scripts/pathfinders/bfs.js"></script>
+
+</head>
+<body>
+
+  <canvas></canvas>
+
+  <div class="sidebar">
+    <i id="sidebar-icon" onclick="colOrExp()" class="fas fa-angle-left click"></i>
+    
+    <svg class="banner" viewBox="0 0 361 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 0H313L360.5 43L313 95.5H0V0Z" fill="#B43D87"/>
+      <!-- <circle cx="52" cy="46" r="10" fill="#EAEAEA"/>
+      <circle cx="129" cy="46" r="10" fill="#EAEAEA"/>
+      <circle cx="206" cy="46.5" r="10" fill="#EAEAEA"/>
+      <circle cx="283" cy="46.5" r="10" fill="#EAEAEA"/> -->
+    </svg>
+
+    <div class="small-menu">
+      <i onclick="nodeSelect(this.id)" id="circle" class="fas fa-circle node-item"></i>
+      <i onclick="nodeSelect(this.id)" id="square" class="fas fa-square node-item"></i>
+      <i onclick="nodeSelect(this.id)" id="flag" class="fas fa-flag node-item"></i>
+      <i onclick="mediaAction()" class="fas fa-play click" id="media"></i>
+    </div>
+    
+    <div class="sidebar-body">
+      <i id="info" class="far fa-question-circle"></i>
+      <div class="info-block">
+
+        <i class="fas fa-circle"></i>
+        <span> is the starting node</span>
+        <br>
+
+        <i class="fas fa-square"></i>
+        <span> are obstacles nodes</span>
+        <br>
+
+        <i class="fas fa-flag"></i>
+        <span> is the ending node</span>
+        <br>
+
+        <i class="fas fa-square-full" style="color: royalblue;"></i>
+        <span> is the best path</span>
+        <br>
+
+        <i class="fas fa-square-full" style="color: limegreen;"></i>
+        <span> are evaluated nodes</span>
+        <br>
+
+        <i class="fas fa-square-full" style="color: red"></i>
+        <span> are unevaluated nodes</span>
+        <br>
+
+      </div>
+
+      <div class="algorithms">
+        <h1>Algorithms</h1>
+
+        <ul>
+          <li onclick="algoSelect(this.id)" id="dfs" class="algoItem selected">Depth-First Search</li>
+          <li onclick="algoSelect(this.id)" id="bfs" class="algoItem">Breadth-First Search</li>
+          <li onclick="algoSelect(this.id)" id="dijkstra" class="algoItem">Dijkstra</li>
+          <li onclick="algoSelect(this.id)" id="aStar" class="algoItem">*A</li>
+        </ul>
+      </div>
+
+      <div class="buttons">
+        <button onclick="startPathfinding()" id="start" class="click">Start<br>Pathfinding</button>
+        <button onclick="generateMaze()" id="maze" class="click">Generate<br>Maze</button>
+      </div>
+
+      <div class="diagonal-check">
+        <input onchange="diagonalCheck(this.checked)" type="checkbox" id="diagonals" name="diagonals" checked>
+        <label for="diagonals">Diagonal movement</label>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script src="scripts/sketch.js"></script>
+  
+</body>
+</html>
