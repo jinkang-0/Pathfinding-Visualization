@@ -76,7 +76,6 @@ function aStar() {
       // trace back and find path
       setTimeout( () => {
         current.tracePath();
-        console.log("Path found");
       }, 1);
 
       paused = true;
@@ -86,7 +85,6 @@ function aStar() {
   } else {
     // if there are no more nodes left and have not reached desired node,
     // return failure and pause
-    console.log("FAILED");
     paused = true;
     return;
   }

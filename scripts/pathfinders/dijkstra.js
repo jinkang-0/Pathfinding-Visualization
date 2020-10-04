@@ -60,7 +60,6 @@ function dijkstra() {
     if (current === endNode) {
       setTimeout(() => {
         current.tracePath();
-        console.log("Path found");
       }, 1);
       
       paused = true;
@@ -70,7 +69,6 @@ function dijkstra() {
   } else {
     // if all nodes available are evaluated and have not reached desired location,
     // return failure and pause
-    console.log("FAILURE");
     paused = true;
     return;
   }

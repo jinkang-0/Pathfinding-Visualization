@@ -26,7 +26,6 @@ function dfs() {
 
       setTimeout(() => {
         current.tracePath();
-        console.log("Path found");
       }, 1);
 
       paused = true;
@@ -36,7 +35,6 @@ function dfs() {
   } else {
     // if we have not reached our goal and there are no more nodes to evaluate,
     // return failure and pause
-    console.log("FAILURE");
     paused = true;
     return;
   }

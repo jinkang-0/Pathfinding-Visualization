@@ -51,7 +51,6 @@ function maze_generate() {
 
   } else {
     // if no more cells to evaluate, return
-    console.log("Generation complete");
     evaluated = [];
     toEvaluate = [];
 

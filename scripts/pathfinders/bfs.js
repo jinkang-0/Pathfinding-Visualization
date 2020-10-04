@@ -22,7 +22,6 @@ function bfs() {
 
       setTimeout(() => {
         current.tracePath();
-        console.log("Path found");
       }, 1);
 
       paused = true;
@@ -32,7 +31,6 @@ function bfs() {
   } else {
     // if no more nodes to examine and goal is not reached,
     // return failure and pause
-    console.log("FAILURE");
     paused = true;
     return;
   }
