@@ -14,8 +14,14 @@ class Node {
       return !obstacles.includes(node);
     }
 
+    // neighbors in cardinal directions
     if (this.col > 0) {
       let n = grid[this.col-1][this.row];
+      if (notObstacle(n)) this.neighbors.push(n);
+    }
+
+    if (this.row < rows - 1) {
+      let n = grid[this.col][this.row + 1];
       if (notObstacle(n)) this.neighbors.push(n);
     }
 
@@ -26,11 +32,6 @@ class Node {
 
     if (this.row > 0) {
       let n = grid[this.col][this.row - 1];
-      if (notObstacle(n)) this.neighbors.push(n);
-    }
-
-    if (this.row < rows - 1) {
-      let n = grid[this.col][this.row + 1];
       if (notObstacle(n)) this.neighbors.push(n);
     }
 
@@ -144,6 +145,8 @@ class Node {
 
     if (obstacles.includes(this)) {
       c.fillStyle = "black";
+      // c.fillRect(this.col * scale + 10, this.row * scale + 10, scale - 20, scale - 20);
+      // c.fillRect(this.col * scale + 1, this.row * scale + 1, scale - 1, scale - 1);
       if (mazeMaking) {
         c.fillRect(this.col * scale + 1, this.row * scale + 1, scale - 1, scale - 1);
       } else {

@@ -4,17 +4,18 @@ var c = canvas.getContext('2d');
 
 canvas.width = window.innerWidth - 50;
 canvas.height = window.innerHeight;
+let scale = canvas.height / 20;
 
 addEventListener('resize', () => {
   canvas.width = window.innerWidth - 50;
   canvas.height = window.innerHeight;
+  scale = canvas.height / 20;
   setup();
 });
 
 // declare variables
 let cols;
 let rows;
-let scale = 40;
 let grid;
 
 var toEvaluate;

@@ -26,33 +26,42 @@ function maze_generate() {
     var current = toEvaluate[ Math.floor( Math.random() * toEvaluate.length ) ];
 
     // find num of visited neighbors this obstacle has
+    // also if neighbor is a wall, find amount of their neighbors that aren't walls
     let count = 0;
+    let wallCount = 0;
     for (let neighbor of current.neighbors) {
-      if (evaluated.includes(neighbor)) {
+      if (obstacles.includes(neighbor)) {
+        for (let wallNeighbor of neighbor.neighbors) {
+          if (!obstacles.includes(wallNeighbor)) {
+            wallCount++;
+          }
+        }
+      } else if (evaluated.includes(neighbor)) {
         count++;
       }
     }
 
-    // if there is one visited neighbor, make this a passage
-    if (count <= 1) {
+    // mark self as visited
+    removeFromArray(toEvaluate, current);
+    evaluated.push(current);
+
+    // if there is only one visited neighbor,
+    // and there are less than 3 neighbors near neighboring walls,
+    // make this a passage
+    if (count == 1 && wallCount < 3) {
       removeFromArray(obstacles, current);
 
       // add neighboring walls to evaluate
       for (let neighbor of current.neighbors) {
-        if (!(neighbor === startNode || neighbor === endNode)) {
+        if (!toEvaluate.includes(neighbor) && !(neighbor === startNode || neighbor === endNode || evaluated.includes(neighbor))) {
           toEvaluate.push(neighbor);
         }
       }
     }
 
-    // mark as visited
-    removeFromArray(toEvaluate, current);
-    evaluated.push(current);
-
   } else {
     // if no more cells to evaluate, return
     evaluated = [];
-    toEvaluate = [];
 
     // pause loop
     mazeMaking = false;

@@ -1,11 +1,11 @@
 # Pathfinding Visualization
-This visualization only looks at 4 popular pathfinding algorithms:
+This project uses these 4 popular algorithms:
 - A*
 - Dijkstra
 - Depth-First Search
 - Breadth-First Search
 
-The maze generation algorithm is an attempt to implement the randomized version of Prim's Algorithm
+and tries to visualize their process of finding a path.
 
 ### Github Page
 https://jinkang-0.github.io/Pathfinding-Visualization/

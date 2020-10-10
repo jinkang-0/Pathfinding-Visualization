@@ -195,6 +195,7 @@ button {
   font-family: inherit;
   font-weight: 500;
   font-size: 18px;
+  outline: none;
 
   padding: 5px 15px 5px 15px;
   margin: 10px 0 10px 0;
