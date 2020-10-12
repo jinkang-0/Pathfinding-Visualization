@@ -196,6 +196,10 @@ button {
   font-weight: 500;
   font-size: 18px;
   outline: none;
+  
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
 
   padding: 5px 15px 5px 15px;
   margin: 10px 0 10px 0;
